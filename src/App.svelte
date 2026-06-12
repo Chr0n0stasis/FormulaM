@@ -179,7 +179,6 @@
       colorSchemeMediaQuery.addEventListener("change", handleThemeMediaChange);
     } else {
       // Safari and older browsers.
-      // @ts-expect-error legacy event support
       colorSchemeMediaQuery.addListener(handleThemeMediaChange);
     }
 
@@ -212,7 +211,6 @@
       if (typeof colorSchemeMediaQuery.removeEventListener === "function") {
         colorSchemeMediaQuery.removeEventListener("change", handleThemeMediaChange);
       } else {
-        // @ts-expect-error legacy event support
         colorSchemeMediaQuery.removeListener(handleThemeMediaChange);
       }
     }
@@ -238,9 +236,9 @@
     />
   {/if}
 
-  <section class="actions">
-    <button type="button" class="primary" disabled={isBusy || !massIndex} on:click={runSearch}>Find candidate formulas</button>
-    <button id="downloadCsv" type="button" disabled={isBusy || results.length === 0} on:click={downloadCsv}>Download CSV</button>
+  <section class="my-4 flex flex-wrap gap-3">
+    <button type="button" class="primary-action" disabled={isBusy || !massIndex} on:click={runSearch}>Find candidate formulas</button>
+    <button id="downloadCsv" type="button" class="secondary-action" disabled={isBusy || results.length === 0} on:click={downloadCsv}>Download CSV</button>
   </section>
 
   {#if hasSearched}
@@ -249,7 +247,7 @@
 
   <ExamplesPanel />
 
-  <footer class="site-footer">
+  <footer class="pt-5.5 text-center text-[0.92rem] text-muted">
     © 2026 The Regents of the United Colleges, Lastoria Royal College of Science
   </footer>
 </main>

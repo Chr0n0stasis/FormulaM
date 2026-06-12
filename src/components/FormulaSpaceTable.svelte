@@ -13,30 +13,31 @@
   $: canAddRow = elementOptionsForRow(rows, massIndex, null).length > 0;
 </script>
 
-<section class="card" aria-label="Formula search space">
-  <div class="section-header">
+<section class="ui-card" aria-label="Formula search space">
+  <div class="flex items-start justify-between gap-4">
     <div>
-      <h2>Formula search space</h2>
-      <p>Use one row per isotope-specific species. Repeated elements are allowed when different isotopes are selected.</p>
+      <h2 class="mt-0">Formula search space</h2>
+      <p class="-mt-1.5 text-muted">Use one row per isotope-specific species. Repeated elements are allowed when different isotopes are selected.</p>
     </div>
   </div>
 
-  <div class="formula-table-wrap">
-    <table class="formula-table">
+  <div class="w-full overflow-x-auto">
+    <table class="w-full border-collapse">
       <thead>
         <tr>
-          <th>Element</th>
-          <th>Isotope</th>
-          <th>Lower limit</th>
-          <th>Upper limit</th>
-          <th aria-label="Remove row"></th>
+          <th class="formula-table-head min-w-[130px]">Element</th>
+          <th class="formula-table-head min-w-[180px]">Isotope</th>
+          <th class="formula-table-head min-w-[140px]">Lower limit</th>
+          <th class="formula-table-head min-w-[140px]">Upper limit</th>
+          <th class="formula-table-head w-[58px] text-right" aria-label="Remove row"></th>
         </tr>
       </thead>
       <tbody>
         {#each rows as row (row.id)}
           <tr>
-            <td>
+            <td class="formula-table-cell min-w-[130px]">
               <select
+                class="field-control"
                 value={row.element}
                 disabled={disabled}
                 aria-label="Element"
@@ -47,8 +48,9 @@
                 {/each}
               </select>
             </td>
-            <td>
+            <td class="formula-table-cell min-w-[180px]">
               <select
+                class="field-control"
                 value={row.isotope}
                 disabled={disabled}
                 aria-label="Isotope"
@@ -59,8 +61,9 @@
                 {/each}
               </select>
             </td>
-            <td>
+            <td class="formula-table-cell min-w-[140px]">
               <input
+                class="field-control"
                 type="number"
                 min="0"
                 step="1"
@@ -73,8 +76,9 @@
                 }}
               />
             </td>
-            <td>
+            <td class="formula-table-cell min-w-[140px]">
               <input
+                class="field-control"
                 type="number"
                 min="0"
                 step="1"
@@ -87,10 +91,10 @@
                 }}
               />
             </td>
-            <td>
+            <td class="formula-table-cell w-[58px] text-right">
               <button
                 type="button"
-                class="remove-row"
+                class="danger-icon-action"
                 title="Remove row"
                 disabled={disabled || rows.length <= 1}
                 on:click={() => onRemoveRow(row.id)}
@@ -101,7 +105,7 @@
       </tbody>
     </table>
   </div>
-  <div class="add-row-wrap">
-    <button id="addRow" type="button" class="icon-button" title="Add row" disabled={disabled || !canAddRow} on:click={onAddRow}>+</button>
+  <div class="mt-2.5 flex justify-start">
+    <button id="addRow" type="button" class="icon-action" title="Add row" disabled={disabled || !canAddRow} on:click={onAddRow}>+</button>
   </div>
 </section>

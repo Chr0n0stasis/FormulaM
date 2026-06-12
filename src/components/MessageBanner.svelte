@@ -4,11 +4,11 @@
   export let message = "";
   export let status: AppStatus = "idle";
 
-  $: kind = status === "error" ? "error" : status === "success" ? "success" : status === "running" || status === "loading" ? "info" : "";
+  $: toneClass = status === "error" ? "text-danger" : status === "success" ? "text-success" : status === "running" || status === "loading" ? "text-info" : "text-muted";
 </script>
 
 {#if message}
-  <section class={`message ${kind}`.trim()} aria-live="polite">
+  <section class={`my-3.5 rounded-2 border border-solid border-border bg-surface-2 px-3.5 py-3 ${toneClass}`} aria-live="polite">
     {message}
   </section>
 {/if}
