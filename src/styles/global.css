@@ -60,17 +60,18 @@ button, input, select { font: inherit; }
 .github-link, .theme-toggle {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  min-height: 40px;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
   border: 1px solid var(--border);
-  border-radius: 999px;
+  border-radius: 50%;
   background: var(--surface);
   color: var(--text);
   box-shadow: var(--shadow);
+  padding: 0;
 }
 
 .github-link {
-  padding: 8px 13px;
   text-decoration: none;
   font-weight: 650;
 }
@@ -79,7 +80,6 @@ button, input, select { font: inherit; }
 .github-mark { width: 20px; height: 20px; fill: currentColor; }
 
 .theme-toggle {
-  padding: 8px 14px;
   cursor: pointer;
 }
 
