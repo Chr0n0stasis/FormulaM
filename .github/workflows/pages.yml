@@ -2,7 +2,7 @@ name: Deploy FormulaM static site
 
 on:
   push:
-    branches: ["main"]
+    branches: ["deploy"]
   workflow_dispatch:
 
 permissions:
