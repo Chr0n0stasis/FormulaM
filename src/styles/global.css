@@ -17,6 +17,14 @@
   --control-glow: 0 0 0 3px color-mix(in srgb, var(--accent), transparent 58%);
   --focus-ring: color-mix(in srgb, var(--accent), transparent 70%);
   --row-odd: color-mix(in srgb, var(--surface-2), transparent 35%);
+  --toggle-track-bg: #2d3846;
+  --toggle-track-border: #617083;
+  --toggle-track-active: var(--accent);
+  --toggle-track-active-border: var(--toggle-track-active);
+  --toggle-thumb-bg: #dce6f2;
+  --toggle-thumb-border: #9bacbf;
+  --toggle-thumb-active-bg: #ffffff;
+  --toggle-thumb-active-border: color-mix(in srgb, var(--toggle-track-active), white 34%);
   font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 }
 
@@ -37,6 +45,12 @@ html[data-theme="light"] {
   --info: #175cd3;
   --shadow: 0 16px 40px rgba(15, 23, 42, 0.08);
   --control-glow: 0 0 0 3px color-mix(in srgb, var(--accent), transparent 68%);
+  --toggle-track-bg: color-mix(in srgb, var(--surface-2), var(--surface) 18%);
+  --toggle-track-border: #c5d0dd;
+  --toggle-thumb-bg: #ffffff;
+  --toggle-thumb-border: #b4c1d1;
+  --toggle-thumb-active-bg: #ffffff;
+  --toggle-thumb-active-border: color-mix(in srgb, var(--toggle-track-active), white 26%);
 }
 
 html[data-theme="dark"] { color-scheme: dark; }
