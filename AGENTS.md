@@ -40,6 +40,7 @@ Add or update tests when changing:
 - isotope labels or formula formatting
 - result sorting, filtering, CSV output, or error messages
 - mass-data loading or validation
+- When performing interactive browser testing, if importing a CSV is necessary to continue the flow, use `tests\melatonin.csv`.
 
 Prefer small regression tests for the changed behavior. Do not weaken assertions to make tests pass.
 
