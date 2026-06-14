@@ -43,6 +43,8 @@ export default defineConfig({
     "topbar-brand-mark": "h-10 w-10 shrink-0 object-contain",
     "topbar-brand-copy": "text-[1.125rem] leading-none font-bold tracking-[0.02em] lt-sm:text-[1rem]",
     "topbar-actions": "flex shrink-0 items-center gap-4 lt-md:gap-[13px]",
+    "topbar-control-solid": "transition-[background-color,border-color,backdrop-filter] duration-200 bg-control-bg border-control-border",
+    "topbar-control-glass": "transition-[background-color,border-color,backdrop-filter] duration-200 border-[color:color-mix(in_srgb,var(--border),transparent_14%)] bg-[color:color-mix(in_srgb,var(--surface),transparent_40%)] backdrop-blur-[10px] backdrop-saturate-135",
     "ui-card": "my-4.5 rounded-2 border border-solid border-border bg-surface p-5.5 shadow-app lt-md:p-4",
     "round-control": `inline-flex h-10 w-10 cursor-pointer items-center justify-center rounded-full border border-solid border-control-border bg-control-bg p-0 text-text shadow-app ${buttonInteraction}`,
     "field-title": "mb-1.5 block font-[650]",
