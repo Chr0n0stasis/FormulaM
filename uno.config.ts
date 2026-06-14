@@ -10,7 +10,12 @@ const fieldInteraction = `${interactiveBorder} focus:shadow-control-glow focus-v
 
 export default defineConfig({
   presets: [presetUno(), presetIcons()],
-  safelist: ["topbar-shell-scrolled"],
+  safelist: [
+    "topbar-shell-scrolled",
+    "i-typcn-arrow-unsorted",
+    "i-typcn-arrow-sorted-up",
+    "i-typcn-arrow-sorted-down",
+  ],
   theme: {
     colors: {
       bg: "var(--bg)",
@@ -61,6 +66,12 @@ export default defineConfig({
     "toggle-input": "sr-only",
     "toggle-track": "relative h-7 w-12 shrink-0 rounded-full border border-solid border-[var(--toggle-track-border)] bg-[var(--toggle-track-bg)] shadow-[inset_0_1px_0_rgba(255,255,255,0.02)] transition-all duration-200 ease-out peer-checked:border-[var(--toggle-track-active-border)] peer-checked:bg-[var(--toggle-track-active)] peer-focus-visible:shadow-control-glow after:absolute after:left-[3px] after:top-1/2 after:h-5 after:w-5 after:-translate-y-1/2 after:rounded-full after:border after:border-solid after:border-[var(--toggle-thumb-border)] after:bg-[var(--toggle-thumb-bg)] after:shadow-[0_2px_8px_rgba(15,23,42,0.28)] after:transition-all after:duration-200 after:ease-out after:content-[''] peer-checked:after:translate-x-5 peer-checked:after:border-[var(--toggle-thumb-active-border)] peer-checked:after:bg-[var(--toggle-thumb-active-bg)]",
     "toggle-copy": "text-[0.98rem] leading-[1.4]",
+    "results-sort-button": `inline-flex w-full cursor-pointer items-center justify-between gap-2 rounded-[10px] border-none bg-transparent px-1 py-1 text-left text-inherit shadow-none [appearance:none] transition-colors duration-150 hover:text-text focus-visible:text-text focus-visible:shadow-control-glow ${noNativeOutline}`,
+    "results-sort-icon": "inline-block h-4 w-4 shrink-0",
+    "results-row-active": "bg-[color:color-mix(in_srgb,var(--accent),transparent_90%)] transition-colors duration-150",
+    "results-assign-button": `inline-flex h-8 w-8 min-h-[32px] cursor-pointer items-center justify-center rounded-[10px] border border-solid border-control-border bg-surface-2 p-0 text-text ${buttonInteraction} ${disabledState}`,
+    "results-assign-button-active": `inline-flex h-8 w-8 min-h-[32px] cursor-pointer items-center justify-center rounded-[10px] border border-solid border-transparent bg-accent p-0 text-accent-contrast ${blueButtonInteraction} ${disabledState}`,
+    "results-assign-icon": "h-[18px] w-[18px]",
     "table-head": "px-2 py-2 text-left text-[0.9rem] text-muted",
     "table-cell": "border-t border-border [border-top-style:solid] px-2 py-2 align-middle",
     "formula-table-head": "border-b border-border [border-bottom-style:solid] px-2 py-2 text-left text-[0.9rem] text-muted",

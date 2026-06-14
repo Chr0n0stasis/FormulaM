@@ -20,6 +20,12 @@ export function buildPeakAssignment(peak: SpectrumPeak, hit: FormulaHit): PeakAs
   };
 }
 
+export function matchesAssignmentHit(assignment: PeakAssignment | null | undefined, hit: FormulaHit): boolean {
+  if (!assignment) return false;
+  if (assignment.ionFormula) return assignment.ionFormula === hit.ion_formula;
+  return assignment.formula === hit.formula;
+}
+
 export function upsertAssignment(assignments: PeakAssignment[], assignment: PeakAssignment): PeakAssignment[] {
   return [...assignments.filter((item) => item.peakId !== assignment.peakId), assignment].sort((left, right) => left.mz - right.mz);
 }

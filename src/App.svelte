@@ -20,7 +20,7 @@
     makeRow,
     validateAndBuildElements,
   } from "./core/searchSpace";
-  import { getAssignment, attachAssignmentsToPeaks, buildPeakAssignment, removeAssignment, upsertAssignment } from "./core/assignments";
+  import { getAssignment, attachAssignmentsToPeaks, buildPeakAssignment, matchesAssignmentHit, removeAssignment, upsertAssignment } from "./core/assignments";
   import { downloadAnnotatedSpectrumPng, downloadAssignmentsCsv } from "./core/exportSpectrum";
   import { createPlotSettings, DEFAULT_PLOT_SETTINGS } from "./core/plotTicks";
   import { findFormulas } from "./core/search";
@@ -382,6 +382,19 @@
     status = "success";
   }
 
+  function isAssignedHitForSelectedPeak(hit: FormulaHit): boolean {
+    return matchesAssignmentHit(selectedAssignment, hit);
+  }
+
+  function handleToggleAssignment(hit: FormulaHit): void {
+    if (!selectedPeak) return;
+    if (isAssignedHitForSelectedPeak(hit)) {
+      handleRemoveAssignment(selectedPeak.id);
+      return;
+    }
+    handleAssign(hit);
+  }
+
   function handleRemoveAssignment(peakId: string): void {
     const previous = getAssignment(spectrumAssignments, peakId);
     spectrumAssignments = removeAssignment(spectrumAssignments, peakId);
@@ -516,8 +529,8 @@
       <ResultsTable
         {results}
         selectedPeakLabel={selectedPeakLabel}
-        selectedPeakHasAssignment={Boolean(selectedAssignment)}
-        onAssign={rawSpectrumPeaks.length > 0 ? handleAssign : null}
+        activeAssignment={selectedAssignment}
+        onToggleAssignment={rawSpectrumPeaks.length > 0 ? handleToggleAssignment : null}
       />
     {/if}
 
