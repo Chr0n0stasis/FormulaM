@@ -38,46 +38,64 @@
       />
       <small id="chargeHelp" class="field-hint">Examples: +1, 1+, +2, 2+, -1, 2-</small>
     </label>
-    <label class="block">
-      <span class="field-title">Tolerance mode</span>
-      <select
-        class="field-control field-select"
-        value={form.toleranceMode}
-        disabled={disabled}
-        on:change={(event) => onChange({ toleranceMode: (event.currentTarget as HTMLSelectElement).value as SearchFormState["toleranceMode"] })}
-      >
-        <option value="ppm">ppm</option>
-        <option value="Da">Da</option>
-        <option value="both">both</option>
-      </select>
-    </label>
+    <div class="lt-md:hidden" aria-hidden="true"></div>
     <div class="block">
-      <div class="field-title flex items-center gap-1.25">
-        <label for="tolerancePpm">Tolerance ppm</label>
-        <button class="help-button" type="button" aria-label="Tolerance ppm help" on:click={openPpmHelp}>?</button>
+      <div class="mb-1.5">
+        <div class="field-title m-0 flex items-center gap-1.25">
+          <label for="tolerancePpm">Tolerance ppm</label>
+          <button class="help-button" type="button" aria-label="Tolerance ppm help" on:click={openPpmHelp}>?</button>
+        </div>
       </div>
-      <input
-        id="tolerancePpm"
-        class="field-control"
-        type="text"
-        inputmode="decimal"
-        value={form.tolerancePpm}
-        disabled={disabled || form.toleranceMode === "Da"}
-        on:input={(event) => onChange({ tolerancePpm: (event.currentTarget as HTMLInputElement).value })}
-      />
+      <div class="flex items-center gap-3">
+        <input
+          id="tolerancePpm"
+          class="field-control min-w-0 flex-1"
+          type="text"
+          inputmode="decimal"
+          value={form.tolerancePpm}
+          disabled={disabled || !form.tolerancePpmEnabled}
+          on:input={(event) => onChange({ tolerancePpm: (event.currentTarget as HTMLInputElement).value })}
+        />
+        <label class:toggle-control-disabled={disabled} class="toggle-control shrink-0">
+          <input
+            class="toggle-input peer"
+            type="checkbox"
+            aria-label="Enable ppm tolerance"
+            checked={form.tolerancePpmEnabled}
+            disabled={disabled}
+            on:change={(event) => onChange({ tolerancePpmEnabled: (event.currentTarget as HTMLInputElement).checked })}
+          />
+          <span class="toggle-track" aria-hidden="true"></span>
+        </label>
+      </div>
     </div>
-    <label class="block">
-      <span class="field-title">Tolerance Da</span>
-      <input
-        class="field-control"
-        type="text"
-        inputmode="decimal"
-        placeholder="optional"
-        value={form.toleranceDa}
-        disabled={disabled || form.toleranceMode === "ppm"}
-        on:input={(event) => onChange({ toleranceDa: (event.currentTarget as HTMLInputElement).value })}
-      />
-    </label>
+    <div class="block">
+      <div class="mb-1.5">
+        <span class="field-title m-0">Tolerance Da</span>
+      </div>
+      <div class="flex items-center gap-3">
+        <input
+          id="toleranceDa"
+          class="field-control min-w-0 flex-1"
+          type="text"
+          inputmode="decimal"
+          value={form.toleranceDa}
+          disabled={disabled || !form.toleranceDaEnabled}
+          on:input={(event) => onChange({ toleranceDa: (event.currentTarget as HTMLInputElement).value })}
+        />
+        <label class:toggle-control-disabled={disabled} class="toggle-control shrink-0">
+          <input
+            class="toggle-input peer"
+            type="checkbox"
+            aria-label="Enable Da tolerance"
+            checked={form.toleranceDaEnabled}
+            disabled={disabled}
+            on:change={(event) => onChange({ toleranceDaEnabled: (event.currentTarget as HTMLInputElement).checked })}
+          />
+          <span class="toggle-track" aria-hidden="true"></span>
+        </label>
+      </div>
+    </div>
     <label class="block">
       <span class="field-title">Max results</span>
       <input

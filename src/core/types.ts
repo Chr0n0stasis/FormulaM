@@ -2,7 +2,6 @@ export type ChargeSpec = string | number;
 export type CountBound = [number, number];
 export type ElementBounds = Record<string, CountBound>;
 export type SearchElements = ElementBounds;
-export type ToleranceMode = "ppm" | "Da" | "both";
 export type ThemeName = "dark" | "light";
 export type AppStatus = "loading" | "idle" | "running" | "success" | "error";
 export type PlotLabelMode = "formula" | "mz" | "formula+mz";
@@ -11,7 +10,8 @@ export type PlotLabelFilter = "assigned-only" | "threshold";
 export interface SearchFormState {
   mz: string;
   charge: string;
-  toleranceMode: ToleranceMode;
+  tolerancePpmEnabled: boolean;
+  toleranceDaEnabled: boolean;
   tolerancePpm: string;
   toleranceDa: string;
   maxResults: number;

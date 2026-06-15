@@ -24,6 +24,7 @@
   import { downloadAnnotatedSpectrumPng, downloadAssignmentsCsv } from "./core/exportSpectrum";
   import { createPlotSettings, DEFAULT_PLOT_SETTINGS } from "./core/plotTicks";
   import { findFormulas } from "./core/search";
+  import { createDefaultSearchForm, hasEnabledTolerance, selectedTolerance } from "./core/searchForm";
   import { loadSpectrumImportSource } from "./core/spectrumImport";
   import { buildSpectrumPreview, normalizeSpectrumTable, suggestSpectrumSelection } from "./core/spectrumNormalize";
   import type {
@@ -48,14 +49,7 @@
   let rows: FormulaSpaceRow[] = [];
   let nextRowId = 0;
   let results: FormulaHit[] = [];
-  let form: SearchFormState = {
-    mz: "180.062839518",
-    charge: "+1",
-    toleranceMode: "ppm",
-    tolerancePpm: "5",
-    toleranceDa: "",
-    maxResults: 100,
-  };
+  let form: SearchFormState = createDefaultSearchForm();
   let status: AppStatus = "loading";
   let hasSearched = false;
   let worker: Worker | null = null;
@@ -188,23 +182,12 @@
     rows = rows.filter((row) => row.id !== rowId);
   }
 
-  function selectedTolerance(): { tolerancePpm: string | null; toleranceDa: string | null } {
-    const ppmText = form.tolerancePpm.trim();
-    const daText = form.toleranceDa.trim();
-    const tolerancePpm = (form.toleranceMode === "ppm" || form.toleranceMode === "both") && ppmText ? ppmText : null;
-    const toleranceDa = (form.toleranceMode === "Da" || form.toleranceMode === "both") && daText ? daText : null;
-    if (tolerancePpm === null && toleranceDa === null) {
-      throw new Error("Provide a ppm tolerance, a Da tolerance, or both.");
-    }
-    return { tolerancePpm, toleranceDa };
-  }
-
   function buildRequest(): FindFormulaRequest {
     if (!massIndex) throw new Error("Mass database is not loaded yet.");
     const maxResults = Number(form.maxResults);
     if (!Number.isInteger(maxResults) || maxResults < 1) throw new Error("Max results must be a positive integer.");
     const elements = validateAndBuildElements(rows, massIndex);
-    const { tolerancePpm, toleranceDa } = selectedTolerance();
+    const { tolerancePpm, toleranceDa } = selectedTolerance(form);
     return {
       mz: form.mz,
       elements,
@@ -521,7 +504,7 @@
     {/if}
 
     <section class="my-4 flex flex-wrap gap-3">
-      <button type="button" class="primary-action" disabled={isBusy || !massIndex} on:click={runSearch}>Find candidate formulas</button>
+      <button type="button" class="primary-action" disabled={isBusy || !massIndex || !hasEnabledTolerance(form)} on:click={runSearch}>Find candidate formulas</button>
       <button id="downloadCsv" type="button" class="secondary-action" disabled={isBusy || results.length === 0} on:click={downloadCsv}>Download formula hits CSV</button>
     </section>
 
