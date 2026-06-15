@@ -12,8 +12,8 @@ export interface ResultSortState {
 const numericValueByColumn: Record<ResultSortColumn, (hit: FormulaHit) => number> = {
   mass: (hit) => Number(hit.mass),
   mz: (hit) => Number(hit.mz),
-  error_da: (hit) => Number(hit.error_da),
-  error_ppm: (hit) => Number(hit.error_ppm),
+  error_da: (hit) => Math.abs(Number(hit.error_da)),
+  error_ppm: (hit) => Math.abs(Number(hit.error_ppm)),
 };
 
 export function cycleResultSortState(sortState: ResultSortState | null, column: ResultSortColumn): ResultSortState | null {

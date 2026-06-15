@@ -55,11 +55,11 @@ describe("sortFormulaHits", () => {
     expect(sortFormulaHits(hits, { column: "mz", direction: "desc" }).map((hit) => hit.formula)).toEqual(["B", "A", "C"]);
   });
 
-  it("sorts error columns numerically, including negative values", () => {
-    expect(sortFormulaHits(hits, { column: "error_da", direction: "asc" }).map((hit) => hit.formula)).toEqual(["A", "C", "B"]);
-    expect(sortFormulaHits(hits, { column: "error_da", direction: "desc" }).map((hit) => hit.formula)).toEqual(["B", "C", "A"]);
-    expect(sortFormulaHits(hits, { column: "error_ppm", direction: "asc" }).map((hit) => hit.formula)).toEqual(["B", "C", "A"]);
-    expect(sortFormulaHits(hits, { column: "error_ppm", direction: "desc" }).map((hit) => hit.formula)).toEqual(["A", "C", "B"]);
+  it("sorts error columns by absolute error while preserving the displayed sign", () => {
+    expect(sortFormulaHits(hits, { column: "error_da", direction: "asc" }).map((hit) => hit.formula)).toEqual(["C", "B", "A"]);
+    expect(sortFormulaHits(hits, { column: "error_da", direction: "desc" }).map((hit) => hit.formula)).toEqual(["A", "B", "C"]);
+    expect(sortFormulaHits(hits, { column: "error_ppm", direction: "asc" }).map((hit) => hit.formula)).toEqual(["C", "A", "B"]);
+    expect(sortFormulaHits(hits, { column: "error_ppm", direction: "desc" }).map((hit) => hit.formula)).toEqual(["B", "A", "C"]);
   });
 
   it("cycles sort state as SORT to ASC to DESC to SORT", () => {
