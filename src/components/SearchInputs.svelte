@@ -87,7 +87,7 @@
   <h2 class="mt-0">Search inputs</h2>
   <div class="grid grid-cols-3 gap-4 lt-md:grid-cols-1">
     <label class="block">
-      <span class="field-title">Observed m/z</span>
+      <span class="field-title">Observed <code class="inline-code">m/z</code></span>
       <input
         class="field-control"
         type="text"

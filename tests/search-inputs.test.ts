@@ -37,7 +37,7 @@ describe("SearchInputs", () => {
     expect(body).not.toContain("i-codex-check");
     expect(body).not.toContain(">+1<");
     expect(body.match(/role="switch"/g)).toHaveLength(3);
-    expect(body.match(/class="toggle-switch/g)).toHaveLength(2);
+    expect(body.match(/<button[^>]*class="toggle-switch(?: toggle-switch-checked)?\s*"/g)).toHaveLength(2);
     expect(body).toContain('value="0.01"');
     expect(body).not.toMatch(/<input[^>]*id="tolerancePpm"[^>]*disabled/);
     expect(body).toMatch(/<input[^>]*id="toleranceDa"[^>]*disabled/);

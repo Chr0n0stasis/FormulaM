@@ -58,7 +58,7 @@ describe("ResultsTable", () => {
     const { body } = render(ResultsTable, { props: { results: [sampleHit] } });
 
     expect(body).toContain(">Neutral mass<");
-    expect(body).toContain(">Predicted m/z<");
+    expect(body).toContain('Predicted <code class="inline-code">m/z</code>');
     expect(body).toContain(">Error (Da)<");
     expect(body).toContain(">Error (ppm)<");
     expect(body).toContain('aria-label="Sort by neutral mass"');

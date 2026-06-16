@@ -115,7 +115,7 @@
               aria-label="Sort by predicted m/z"
               on:click={() => toggleSort("mz")}
             >
-              <span>Predicted m/z</span>
+              <span>Predicted <code class="inline-code">m/z</code></span>
               <span
                 aria-hidden="true"
                 class={`results-sort-icon ${getResultSortIconClass(sortState, "mz")} ${sortState?.column === "mz" ? "text-accent" : "text-muted"}`}

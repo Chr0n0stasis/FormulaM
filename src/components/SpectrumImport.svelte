@@ -74,7 +74,7 @@
       <div><strong class="text-text">Current columns:</strong> {mzColumnName || "not imported"} / {intensityColumnName || "not imported"}</div>
     </div>
   {:else}
-    <p class="mb-0 mt-3 text-sm text-muted">No spectrum loaded. The original single m/z workflow still works without importing a file.</p>
+    <p class="mb-0 mt-3 text-sm text-muted">No spectrum loaded. The original single <code class="inline-code">m/z</code> workflow still works without importing a file.</p>
   {/if}
 
   {#if importSource && activeSheet && previewTable}
@@ -101,7 +101,7 @@
       </div>
 
       <label class="block">
-        <span class="field-title">m/z column</span>
+        <span class="field-title"><code class="inline-code">m/z</code> column</span>
         <select
           class="field-control field-select"
           value={mzColumnIndex ?? ""}
