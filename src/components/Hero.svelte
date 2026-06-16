@@ -7,9 +7,10 @@
 
 <header class="mb-6 text-center">
   <img
-    class="max-h-[140px] w-[min(560px,88vw)] object-contain {theme === 'dark' ? 'filter invert hue-rotate-180' : ''}"
+    class={`hero-logo ${theme === "dark" ? "brand-logo-dark" : "brand-logo-light"}`}
     src={logoSrc}
     alt="FormulaM"
+    data-hero-logo="true"
   />
   <p class="mx-auto mt-3 max-w-[760px] text-muted leading-6">Enumerate candidate formulae from observed <code class="inline-code">m/z</code>, explicit charge, tolerance, element bounds, and isotope restrictions.</p>
 </header>

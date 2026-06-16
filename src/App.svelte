@@ -533,7 +533,7 @@
   <TopBar {theme} onToggleTheme={toggleTheme} />
 
   <main class="page-shell">
-    <Hero />
+    <Hero {theme} />
 
     <SpectrumImport
       activeSheetName={spectrumActiveSheetName}

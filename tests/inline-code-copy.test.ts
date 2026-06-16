@@ -142,4 +142,13 @@ describe("m/z inline code copy", () => {
     }).body;
     expect(spectrumPlot).toContain(`its ${inlineMz} into FormulaM`);
   });
+
+  it("marks the hero logo for topbar visibility and theme coloring", () => {
+    const lightHero = render(Hero, { props: { theme: "light" } }).body;
+    expect(lightHero).toContain("data-hero-logo=\"true\"");
+    expect(lightHero).toContain("hero-logo brand-logo-light");
+
+    const darkHero = render(Hero, { props: { theme: "dark" } }).body;
+    expect(darkHero).toContain("hero-logo brand-logo-dark");
+  });
 });

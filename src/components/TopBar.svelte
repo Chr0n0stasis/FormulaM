@@ -44,13 +44,13 @@
       class={`topbar-brand transition-opacity duration-200 ${isBrandVisible ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"}`}
       href="#top"
     >
-      <img class="topbar-brand-mark" src={brandMarkSrc} alt="" aria-hidden="true" />
+      <img class={`topbar-brand-mark ${isDark ? "brand-logo-dark" : "brand-logo-light"}`} src={brandMarkSrc} alt="" aria-hidden="true" />
       <span class="topbar-brand-copy">FormulaM</span>
     </a>
 
     <nav class="topbar-actions" aria-label="Page controls">
       <a
-        class={`round-control no-underline font-[650] ${isBrandVisible ? "topbar-control-solid" : "topbar-control-glass"}`}
+        class={`round-control round-link-control no-underline font-[650] ${isBrandVisible ? "topbar-control-solid" : "topbar-control-glass"}`}
         href="https://github.com/Lastoria-Royal-College-of-Science/FormulaM"
         target="_blank"
         rel="noopener noreferrer"

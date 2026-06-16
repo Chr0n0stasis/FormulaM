@@ -7,6 +7,7 @@ const disabledState = "disabled:cursor-not-allowed disabled:opacity-55 disabled:
 const buttonInteraction = `${interactiveBorder} enabled:active:shadow-control-glow enabled:focus-visible:shadow-control-glow disabled:shadow-none disabled:focus:shadow-none disabled:focus-visible:shadow-none`;
 const blueButtonInteraction = `${blueButtonBorder} enabled:active:shadow-control-glow enabled:focus-visible:shadow-control-glow disabled:shadow-none disabled:focus:shadow-none disabled:focus-visible:shadow-none`;
 const fieldInteraction = `${interactiveBorder} enabled:focus:shadow-control-glow enabled:focus-visible:shadow-control-glow disabled:hover:border-control-border disabled:active:border-control-border disabled:focus:border-control-border disabled:focus-visible:border-control-border disabled:shadow-none disabled:focus:shadow-none disabled:focus-visible:shadow-none`;
+const linkControlInteraction = `hover:[filter:var(--interactive-hover-filter)] active:[filter:var(--interactive-active-filter)] active:border-accent focus:border-accent focus-visible:border-accent active:shadow-control-glow focus-visible:shadow-control-glow ${noNativeOutline}`;
 
 export default defineConfig({
   presets: [presetUno(), presetIcons()],
@@ -49,11 +50,15 @@ export default defineConfig({
     "topbar-shell-scrolled": "before:opacity-100 after:opacity-100",
     "topbar-frame": "relative z-10 mx-auto flex h-[72px] w-full max-w-[1180px] items-center justify-between gap-4 px-4 lt-md:h-[66px] lt-md:gap-[13px] lt-md:px-[13px]",
     "topbar-brand": "inline-flex h-10 items-center gap-[6px] no-underline text-text transition-colors duration-200 hover:text-accent",
-    "topbar-brand-mark": "h-10 w-10 shrink-0 object-contain",
+    "topbar-brand-mark": "h-10 w-10 shrink-0 object-contain transition-[filter] duration-200",
     "topbar-brand-copy": "text-[1.125rem] leading-none font-bold tracking-[0.02em] lt-sm:text-[1rem]",
     "topbar-actions": "flex shrink-0 items-center gap-4 lt-md:gap-[13px]",
     "topbar-control-solid": "transition-[background-color,border-color,backdrop-filter] duration-200 bg-control-bg border-control-border",
     "topbar-control-glass": "transition-[background-color,border-color,backdrop-filter] duration-200 border-[color:color-mix(in_srgb,var(--border),transparent_14%)] bg-[color:color-mix(in_srgb,var(--surface),transparent_40%)] backdrop-blur-[10px] backdrop-saturate-135",
+    "round-link-control": linkControlInteraction,
+    "hero-logo": "max-h-[140px] w-[min(560px,88vw)] object-contain transition-[filter] duration-200",
+    "brand-logo-light": "filter-none",
+    "brand-logo-dark": "filter invert hue-rotate-180",
     "ui-card": "my-4.5 rounded-2 border border-solid border-border bg-surface p-5.5 shadow-app lt-md:p-4",
     "round-control": `inline-flex h-10 w-10 cursor-pointer items-center justify-center rounded-full border border-solid border-control-border bg-control-bg p-0 text-text shadow-app ${buttonInteraction}`,
     "field-title": "mb-1.5 block font-[650]",
