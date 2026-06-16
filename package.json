@@ -1,7 +1,7 @@
 {
   "name": "formulam",
-  "version": "1.1.0",
-  "description": "Vite + TypeScript + Svelte front-end-only FormulaM app for GitHub Pages.",
+  "version": "2.0.0",
+  "description": "Interactive molecular formula elucidation from high-resolution mass spectrometry m/z values.",
   "type": "module",
   "private": true,
   "scripts": {
@@ -9,10 +9,10 @@
     "build": "vite build",
     "preview": "vite preview",
     "check": "svelte-check --tsconfig ./tsconfig.json",
-    "test": "vitest run",
-    "validate:data": "node scripts/check-masses.mjs"
+    "test": "vitest run"
   },
   "keywords": [
+    "chemistry",
     "mass-spectrometry",
     "molecular-formula",
     "isotopes",
