@@ -75,7 +75,7 @@
       {/if}
     </div>
     <div class="flex flex-wrap items-center gap-2 text-sm text-muted">
-      <label for="results-page-size">Rows per page</label>
+      <span>Rows per page</span>
       <select
         id="results-page-size"
         class="field-control field-select min-h-9 min-w-[4.75rem] w-[4.75rem] pl-3 pr-11 py-1.5 text-sm"

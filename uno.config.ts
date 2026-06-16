@@ -1,12 +1,12 @@
 import { defineConfig, presetIcons, presetUno } from "unocss";
 
 const noNativeOutline = "[outline:none] focus:[outline:none] focus-visible:[outline:none] active:[outline:none]";
-const interactiveBorder = `active:border-accent focus:border-accent focus-visible:border-accent ${noNativeOutline}`;
-const blueButtonBorder = `active:border-accent focus-visible:border-accent ${noNativeOutline}`;
+const interactiveBorder = `enabled:active:border-accent enabled:focus:border-accent enabled:focus-visible:border-accent ${noNativeOutline}`;
+const blueButtonBorder = `enabled:active:border-accent enabled:focus-visible:border-accent ${noNativeOutline}`;
 const disabledState = "disabled:cursor-not-allowed disabled:opacity-55 disabled:hover:filter-none disabled:active:filter-none disabled:hover:shadow-none disabled:active:shadow-none";
-const buttonInteraction = `${interactiveBorder} active:shadow-control-glow focus-visible:shadow-control-glow disabled:shadow-none disabled:focus:shadow-none disabled:focus-visible:shadow-none`;
-const blueButtonInteraction = `${blueButtonBorder} active:shadow-control-glow focus-visible:shadow-control-glow disabled:shadow-none disabled:focus:shadow-none disabled:focus-visible:shadow-none`;
-const fieldInteraction = `${interactiveBorder} focus:shadow-control-glow focus-visible:shadow-control-glow disabled:hover:border-control-border disabled:active:border-control-border disabled:focus:border-control-border disabled:focus-visible:border-control-border disabled:shadow-none disabled:focus:shadow-none disabled:focus-visible:shadow-none`;
+const buttonInteraction = `${interactiveBorder} enabled:active:shadow-control-glow enabled:focus-visible:shadow-control-glow disabled:shadow-none disabled:focus:shadow-none disabled:focus-visible:shadow-none`;
+const blueButtonInteraction = `${blueButtonBorder} enabled:active:shadow-control-glow enabled:focus-visible:shadow-control-glow disabled:shadow-none disabled:focus:shadow-none disabled:focus-visible:shadow-none`;
+const fieldInteraction = `${interactiveBorder} enabled:focus:shadow-control-glow enabled:focus-visible:shadow-control-glow disabled:hover:border-control-border disabled:active:border-control-border disabled:focus:border-control-border disabled:focus-visible:border-control-border disabled:shadow-none disabled:focus:shadow-none disabled:focus-visible:shadow-none`;
 
 export default defineConfig({
   presets: [presetUno(), presetIcons()],

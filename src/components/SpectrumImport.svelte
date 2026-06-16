@@ -55,17 +55,18 @@
     <button type="button" class="secondary-action" disabled={disabled || (!importSource && peakCount === 0)} on:click={clearSelection}>Clear spectrum</button>
   </div>
 
-  <label class="mt-4 block">
+  <div class="mt-4 block">
     <span class="field-title">Peak list file</span>
     <input
       bind:this={fileInput}
       class="field-control-file"
       type="file"
       accept=".csv,.xlsx,.xls"
+      aria-label="Peak list file"
       disabled={disabled}
       on:change={handleFileChange}
     />
-  </label>
+  </div>
 
   {#if sourceName}
     <div class="mt-3 rounded-2 border border-solid border-border bg-surface-2 px-3.5 py-3 text-sm text-muted">
@@ -80,14 +81,14 @@
   {#if importSource && activeSheet && previewTable}
     <div class="mt-4 grid grid-cols-4 gap-4 lt-lg:grid-cols-2 lt-md:grid-cols-1">
       {#if importSource.sheets.length > 1}
-        <label class="block">
+        <div class="block">
           <span class="field-title">Worksheet</span>
-          <select class="field-control field-select" value={activeSheetName} disabled={disabled} on:change={(event) => onSelectSheet((event.currentTarget as HTMLSelectElement).value)}>
+          <select class="field-control field-select" value={activeSheetName} aria-label="Worksheet" disabled={disabled} on:change={(event) => onSelectSheet((event.currentTarget as HTMLSelectElement).value)}>
             {#each importSource.sheets as sheet}
               <option value={sheet.name}>{sheet.name}</option>
             {/each}
           </select>
-        </label>
+        </div>
       {/if}
 
       <div class:toggle-control-disabled={disabled} class="toggle-control pt-7">
@@ -100,11 +101,12 @@
         <span class="toggle-copy">First non-empty row is a header</span>
       </div>
 
-      <label class="block">
+      <div class="block">
         <span class="field-title"><code class="inline-code">m/z</code> column</span>
         <select
           class="field-control field-select"
           value={mzColumnIndex ?? ""}
+          aria-label="m/z column"
           disabled={disabled || columnOptions.length === 0}
           on:change={(event) => onSelectMzColumn(parseSelectedIndex((event.currentTarget as HTMLSelectElement).value))}
         >
@@ -113,13 +115,14 @@
             <option value={option.index}>{option.label}</option>
           {/each}
         </select>
-      </label>
+      </div>
 
-      <label class="block">
+      <div class="block">
         <span class="field-title">Intensity column</span>
         <select
           class="field-control field-select"
           value={intensityColumnIndex ?? ""}
+          aria-label="Intensity column"
           disabled={disabled || columnOptions.length === 0}
           on:change={(event) => onSelectIntensityColumn(parseSelectedIndex((event.currentTarget as HTMLSelectElement).value))}
         >
@@ -128,7 +131,7 @@
             <option value={option.index}>{option.label}</option>
           {/each}
         </select>
-      </label>
+      </div>
     </div>
 
     <div class="mt-4 flex flex-wrap items-center gap-3">

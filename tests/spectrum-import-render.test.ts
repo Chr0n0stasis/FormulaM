@@ -1,6 +1,37 @@
 import { describe, expect, it } from "vitest";
 import { render } from "svelte/server";
 import SpectrumImport from "../src/components/SpectrumImport.svelte";
+import type { SpectrumImportSource, SpectrumPreviewTable } from "../src/core/types";
+
+const sampleImportSource: SpectrumImportSource = {
+  sourceName: "melatonin.csv",
+  sheets: [
+    {
+      name: "Sheet1",
+      table: [["m/z", "intensity"], ["100", "50"]],
+      columnCount: 2,
+      rowCount: 2,
+      suggestedHasHeaderRow: true,
+      suggestedMzColumnIndex: 0,
+      suggestedIntensityColumnIndex: 1,
+    },
+    {
+      name: "Sheet2",
+      table: [["m/z", "intensity"], ["101", "60"]],
+      columnCount: 2,
+      rowCount: 2,
+      suggestedHasHeaderRow: true,
+      suggestedMzColumnIndex: 0,
+      suggestedIntensityColumnIndex: 1,
+    },
+  ],
+};
+
+const samplePreviewTable: SpectrumPreviewTable = {
+  columnLabels: ["m/z", "intensity"],
+  rows: [["100", "50"]],
+  totalRows: 1,
+};
 
 describe("SpectrumImport", () => {
   it("renders the peak-list file input without the fixed-height text-field class", () => {
@@ -30,5 +61,36 @@ describe("SpectrumImport", () => {
     expect(body).toContain('type="file"');
     expect(body).toContain('class="field-control-file"');
     expect(body).not.toContain('class="field-control" type="file"');
+  });
+
+  it("renders import field titles as non-label text outside the controls", () => {
+    const { body } = render(SpectrumImport, {
+      props: {
+        activeSheetName: "Sheet1",
+        disabled: false,
+        hasHeaderRow: true,
+        importError: "",
+        importSource: sampleImportSource,
+        intensityColumnIndex: 1,
+        intensityColumnName: "intensity",
+        mzColumnIndex: 0,
+        mzColumnName: "m/z",
+        onApplySelection: () => undefined,
+        onImportFile: () => undefined,
+        onSelectHasHeaderRow: () => undefined,
+        onSelectIntensityColumn: () => undefined,
+        onSelectMzColumn: () => undefined,
+        onSelectSheet: () => undefined,
+        peakCount: 1,
+        previewTable: samplePreviewTable,
+        sourceName: "melatonin.csv",
+      },
+    });
+
+    expect(body).not.toContain("<label");
+    expect(body).toContain('aria-label="Peak list file"');
+    expect(body).toContain('aria-label="Worksheet"');
+    expect(body).toContain('aria-label="m/z column"');
+    expect(body).toContain('aria-label="Intensity column"');
   });
 });

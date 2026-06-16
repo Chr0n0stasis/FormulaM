@@ -75,4 +75,20 @@ describe("SearchInputs", () => {
     expect(body).toMatch(/<input[^>]*id="tolerancePpm"[^>]*disabled/);
     expect(body).toMatch(/<input[^>]*id="toleranceDa"[^>]*disabled/);
   });
+
+  it("keeps field titles outside the interactive hit area", () => {
+    const { body } = render(SearchInputs, {
+      props: {
+        form: createDefaultSearchForm(),
+        ...baseProps,
+      },
+    });
+
+    expect(body).not.toContain('<label for="tolerancePpm">');
+    expect(body).not.toContain('<label class="block">');
+    expect(body).toContain('aria-label="Observed m/z"');
+    expect(body).toContain('aria-label="Tolerance ppm"');
+    expect(body).toContain('aria-label="Tolerance Da"');
+    expect(body).toContain('aria-label="Max results"');
+  });
 });

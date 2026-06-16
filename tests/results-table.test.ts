@@ -91,6 +91,7 @@ describe("ResultsTable", () => {
     const results = Array.from({ length: 12 }, (_, index) => makeHit(index + 1));
     const { body } = render(ResultsTable, { props: { results } });
 
+    expect(body).not.toContain('<label for="results-page-size">');
     expect(body).toContain('aria-label="Rows per page"');
     expect(body).toContain('>All<');
     expect(body).toContain("Showing 1-10 of 12");

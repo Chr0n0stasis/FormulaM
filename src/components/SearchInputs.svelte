@@ -86,17 +86,18 @@
 <section class="ui-card" aria-label="Search inputs">
   <h2 class="mt-0">Search inputs</h2>
   <div class="grid grid-cols-3 gap-4 lt-md:grid-cols-1">
-    <label class="block">
+    <div class="block">
       <span class="field-title">Observed <code class="inline-code">m/z</code></span>
       <input
         class="field-control"
         type="text"
         inputmode="decimal"
         value={form.mz}
+        aria-label="Observed m/z"
         disabled={disabled}
         on:input={(event) => onChange({ mz: (event.currentTarget as HTMLInputElement).value })}
       />
-    </label>
+    </div>
     <div class="block col-span-2 lt-md:col-span-1">
       <div class="mb-1.5">
         <div class="field-title m-0 flex items-center gap-1.25">
@@ -213,7 +214,7 @@
     <div class="block">
       <div class="mb-1.5">
         <div class="field-title m-0 flex items-center gap-1.25">
-          <label for="tolerancePpm">Tolerance ppm</label>
+          <span>Tolerance ppm</span>
           <button class="help-button" type="button" aria-label="Tolerance ppm help" on:click={openPpmHelp}>
             <span class="help-button-icon i-mdi-help" aria-hidden="true"></span>
           </button>
@@ -226,6 +227,7 @@
           type="text"
           inputmode="decimal"
           value={form.tolerancePpm}
+          aria-label="Tolerance ppm"
           disabled={disabled || !form.tolerancePpmEnabled}
           on:input={(event) => onChange({ tolerancePpm: (event.currentTarget as HTMLInputElement).value })}
         />
@@ -248,6 +250,7 @@
           type="text"
           inputmode="decimal"
           value={form.toleranceDa}
+          aria-label="Tolerance Da"
           disabled={disabled || !form.toleranceDaEnabled}
           on:input={(event) => onChange({ toleranceDa: (event.currentTarget as HTMLInputElement).value })}
         />
@@ -259,7 +262,7 @@
         />
       </div>
     </div>
-    <label class="block">
+    <div class="block">
       <span class="field-title">Max results</span>
       <input
         class="field-control"
@@ -268,10 +271,11 @@
         max="5000"
         step="10"
         value={form.maxResults}
+        aria-label="Max results"
         disabled={disabled}
         on:input={(event) => onChange({ maxResults: Number((event.currentTarget as HTMLInputElement).value) })}
       />
-    </label>
+    </div>
   </div>
   <dialog class="max-w-[520px] rounded-2 border border-solid border-border bg-surface p-4 text-text shadow-app" bind:this={chargeHelpDialog}>
     <form method="dialog" class="m-0">
