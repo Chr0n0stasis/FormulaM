@@ -21,7 +21,7 @@
     validateAndBuildElements,
   } from "./core/searchSpace";
   import { getAssignment, attachAssignmentsToPeaks, buildPeakAssignment, matchesAssignmentHit, removeAssignment, upsertAssignment } from "./core/assignments";
-  import { downloadAnnotatedSpectrumPng, downloadAssignmentsCsv } from "./core/exportSpectrum";
+  import { downloadAnnotatedSpectrumPdf, downloadAnnotatedSpectrumPng, downloadAssignmentsCsv } from "./core/exportSpectrum";
   import { createPlotSettings, DEFAULT_PLOT_SETTINGS } from "./core/plotTicks";
   import { canCommitChargeEntryText, createChargeEntry, isChargeDraftText } from "./core/chargeInput";
   import { findFormulaeForCharges } from "./core/search";
@@ -472,6 +472,18 @@
     }
   }
 
+  async function handleExportPdf(): Promise<void> {
+    if (!rawSpectrumPeaks.length) return;
+    try {
+      status = "running";
+      await downloadAnnotatedSpectrumPdf(spectrumPeaks, plotSettings, theme);
+      status = "success";
+    } catch (error) {
+      console.error(error);
+      status = "error";
+    }
+  }
+
   onMount(async () => {
     syncThemeWithSystem();
 
@@ -554,7 +566,7 @@
     />
 
     {#if rawSpectrumPeaks.length > 0}
-      <PlotSettingsPanel settings={plotSettings} disabled={isBusy} onChange={updatePlotSettings} />
+      <PlotSettingsPanel settings={plotSettings} peaks={spectrumPeaks} disabled={isBusy} onChange={updatePlotSettings} />
       <PeakInspector selectedPeak={selectedPeak} assignment={selectedAssignment} onRemoveAssignment={handleRemoveAssignment} />
     {/if}
 
@@ -606,6 +618,7 @@
         onIncludeUnassignedChange={(value) => (includeUnassignedInAssignmentCsv = value)}
         onExportAssignments={handleExportAssignments}
         onExportPng={handleExportPng}
+        onExportPdf={handleExportPdf}
       />
     {/if}
 

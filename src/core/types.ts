@@ -6,7 +6,7 @@ export type SearchElements = ElementBounds;
 export type ThemeName = "dark" | "light";
 export type AppStatus = "loading" | "idle" | "running" | "success" | "error";
 export type PlotLabelMode = "formula" | "mz" | "formula+mz";
-export type PlotLabelFilter = "assigned-only" | "threshold";
+export type PlotLabelFilter = "none" | "assigned-only" | "threshold" | "both";
 
 export interface ChargeEntry {
   id: string;

@@ -221,6 +221,12 @@
         </div>
       </div>
       <div class="flex items-center gap-3">
+        <ToggleSwitch
+          ariaLabel="Enable ppm tolerance"
+          checked={form.tolerancePpmEnabled}
+          disabled={disabled}
+          onChange={(value) => onChange({ tolerancePpmEnabled: value })}
+        />
         <input
           id="tolerancePpm"
           class="field-control min-w-0 flex-1"
@@ -231,12 +237,6 @@
           disabled={disabled || !form.tolerancePpmEnabled}
           on:input={(event) => onChange({ tolerancePpm: (event.currentTarget as HTMLInputElement).value })}
         />
-        <ToggleSwitch
-          ariaLabel="Enable ppm tolerance"
-          checked={form.tolerancePpmEnabled}
-          disabled={disabled}
-          onChange={(value) => onChange({ tolerancePpmEnabled: value })}
-        />
       </div>
     </div>
     <div class="block">
@@ -244,6 +244,12 @@
         <span class="field-title m-0">Tolerance Da</span>
       </div>
       <div class="flex items-center gap-3">
+        <ToggleSwitch
+          ariaLabel="Enable Da tolerance"
+          checked={form.toleranceDaEnabled}
+          disabled={disabled}
+          onChange={(value) => onChange({ toleranceDaEnabled: value })}
+        />
         <input
           id="toleranceDa"
           class="field-control min-w-0 flex-1"
@@ -253,12 +259,6 @@
           aria-label="Tolerance Da"
           disabled={disabled || !form.toleranceDaEnabled}
           on:input={(event) => onChange({ toleranceDa: (event.currentTarget as HTMLInputElement).value })}
-        />
-        <ToggleSwitch
-          ariaLabel="Enable Da tolerance"
-          checked={form.toleranceDaEnabled}
-          disabled={disabled}
-          onChange={(value) => onChange({ toleranceDaEnabled: value })}
         />
       </div>
     </div>

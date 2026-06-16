@@ -1,4 +1,5 @@
 <script lang="ts">
+  import ChemicalFormula from "./ChemicalFormula.svelte";
   import {
     cycleResultSortState,
     getResultSortAria,
@@ -159,7 +160,7 @@
         {#each visibleResults as hit}
           {@const isAssigned = matchesAssignmentHit(activeAssignment, hit)}
           <tr class={isAssigned ? "results-row-active" : "odd:bg-row"}>
-            <td class="table-cell">{hit.ion_formula}</td>
+            <td class="table-cell"><ChemicalFormula formula={hit.ion_formula} /></td>
             <td class="table-cell">{hit.mass}</td>
             <td class="table-cell">{hit.mz}</td>
             <td class="table-cell">{hit.error_da}</td>

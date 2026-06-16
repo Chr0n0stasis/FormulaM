@@ -49,7 +49,10 @@ describe("ResultsTable", () => {
     expect(body.match(/<th class="table-head">Formula<\/th>/g)).toHaveLength(1);
     expect(body).not.toContain(">ion_formula<");
     expect(body).not.toContain(">charge<");
-    expect(body).toContain(`<td class="table-cell">${sampleHit.ion_formula}</td>`);
+    expect(body).toContain(`<span class="chemical-formula" aria-label="${sampleHit.ion_formula}">`);
+    expect(body).toContain("<sub>6</sub>");
+    expect(body).toContain("<sub>12</sub>");
+    expect(body).toContain("<sup>+</sup>");
     expect(body).not.toContain(`<td class="table-cell">${sampleHit.formula}</td>`);
     expect(body).not.toContain(">Assign<");
   });
@@ -99,8 +102,8 @@ describe("ResultsTable", () => {
     expect(body).toContain("Go to previous results page");
     expect(body).toContain("Go to next results page");
     expect(body).toContain("[F10]+");
-    expect(body).not.toContain("[F11]+");
-    expect(body).not.toContain("[F12]+");
+    expect(body).not.toContain('aria-label="[F11]+"');
+    expect(body).not.toContain('aria-label="[F12]+"');
   });
 
   it("updates the empty-state colspan to match the visible columns", () => {
