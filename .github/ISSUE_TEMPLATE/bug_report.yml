@@ -1,0 +1,104 @@
+name: Bug report
+description: Report a UI, runtime, import/export, or interaction bug.
+title: "bug: "
+labels: ["bug", "needs-reproduction"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for reporting a bug in FormulaM.
+
+        Use this template for UI, runtime, import/export, browser, or interaction problems. If the issue is about an unexpected formula, mass, m/z, charge, isotope, tolerance, assignment, or plot result, use the Scientific result issue template instead.
+
+  - type: textarea
+    id: summary
+    attributes:
+      label: Summary
+      description: What went wrong?
+      placeholder: Describe the bug clearly.
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      description: List the exact steps needed to reproduce the issue.
+      placeholder: |
+        1. Open FormulaM
+        2. Enter ...
+        3. Click ...
+        4. See ...
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+      description: What did you expect to happen?
+    validations:
+      required: true
+
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behavior
+      description: What actually happened?
+    validations:
+      required: true
+
+  - type: dropdown
+    id: area
+    attributes:
+      label: Affected area
+      options:
+        - App startup or page loading
+        - Formula search UI
+        - Results table
+        - Spectrum import
+        - Spectrum assignment
+        - Plotting or visualization
+        - CSV or file export
+        - Styling or layout
+        - Accessibility
+        - Other
+    validations:
+      required: true
+
+  - type: input
+    id: browser
+    attributes:
+      label: Browser
+      placeholder: "Example: Chrome 126, Firefox 127, Safari 18"
+    validations:
+      required: false
+
+  - type: input
+    id: os
+    attributes:
+      label: Operating system
+      placeholder: "Example: macOS, Windows, Linux, iOS, Android"
+    validations:
+      required: false
+
+  - type: textarea
+    id: input-data
+    attributes:
+      label: Input data or file details
+      description: If the issue involves import, export, spectrum handling, or a specific search, describe the input data shape. You may attach files after creating the issue.
+      placeholder: |
+        File type:
+        Relevant columns:
+        Example rows or values:
+    validations:
+      required: false
+
+  - type: textarea
+    id: console
+    attributes:
+      label: Console output, screenshots, or recordings
+      description: Paste console errors or attach screenshots/recordings if available.
+      render: text
+    validations:
+      required: false

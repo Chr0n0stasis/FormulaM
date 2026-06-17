@@ -1,0 +1,71 @@
+name: Feature request
+description: Suggest a new feature or workflow improvement.
+title: "feature: "
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for suggesting an improvement.
+
+        For large scientific, architectural, deployment, or dependency changes, describe the motivation and compatibility impact clearly before implementation begins.
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem
+      description: What problem or workflow limitation are you trying to solve?
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed solution
+      description: What should FormulaM do differently?
+    validations:
+      required: true
+
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      options:
+        - Formula enumeration
+        - Charge or mass correction
+        - Isotope handling
+        - Spectrum import
+        - Spectrum assignment
+        - Plotting or visualization
+        - Export
+        - UI or accessibility
+        - Documentation
+        - Build or deployment
+        - Dependencies
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: behavior
+    attributes:
+      label: Scientific or user-facing behavior
+      description: Describe any expected change to formula results, m/z handling, charge behavior, tolerance behavior, adduct assumptions, import/export, or display.
+    validations:
+      required: false
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+      description: Describe other approaches or workarounds you considered.
+    validations:
+      required: false
+
+  - type: textarea
+    id: compatibility
+    attributes:
+      label: Compatibility concerns
+      description: Note any browser, deployment, data-shape, scientific, or backward-compatibility concerns.
+    validations:
+      required: false

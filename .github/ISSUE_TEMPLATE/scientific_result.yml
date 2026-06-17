@@ -1,0 +1,125 @@
+name: Scientific result issue
+description: Report unexpected formula enumeration, mass, m/z, charge, isotope, tolerance, assignment, or plot behavior.
+title: "scientific: "
+labels: ["bug", "scientific", "needs-reproduction"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this template for scientific or calculation-related issues.
+
+        FormulaM works from observed mass spectrometry m/z values. Charge is explicit. FormulaM applies bare-ion electron-mass correction for charged species and does not add adduct behavior unless that behavior is intentionally changed.
+
+  - type: textarea
+    id: summary
+    attributes:
+      label: Summary
+      description: What scientific result looks wrong or surprising?
+      placeholder: Describe the issue clearly.
+    validations:
+      required: true
+
+  - type: dropdown
+    id: area
+    attributes:
+      label: Affected scientific area
+      options:
+        - Formula enumeration
+        - Exact mass calculation
+        - Bare-ion electron-mass correction
+        - Charge parsing or charge display
+        - ppm or Da tolerance handling
+        - Isotope handling or isotope labels
+        - Formula formatting
+        - Result sorting or filtering
+        - Spectrum import
+        - Spectrum assignment
+        - Plot annotation or rendering
+        - CSV export
+        - Other
+    validations:
+      required: true
+
+  - type: input
+    id: mz
+    attributes:
+      label: Observed m/z
+      description: Enter the observed m/z value used in FormulaM, not a neutral mass.
+      placeholder: "Example: 180.062839518"
+    validations:
+      required: true
+
+  - type: input
+    id: charge
+    attributes:
+      label: Charge
+      description: Use the same charge input used in FormulaM.
+      placeholder: "Example: +1, -1, +2"
+    validations:
+      required: true
+
+  - type: input
+    id: tolerance
+    attributes:
+      label: Tolerance
+      placeholder: "Example: 5 ppm or 0.000001 Da"
+    validations:
+      required: true
+
+  - type: textarea
+    id: elements
+    attributes:
+      label: Element or isotope ranges
+      description: List the selected elements, isotopes, and min/max ranges.
+      placeholder: |
+        C: 0-12
+        H: 0-30
+        O: 0-12
+        13C: 0-1
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected result
+      description: What formula, mass, m/z, error, charge state, assignment, or plot behavior did you expect?
+    validations:
+      required: true
+
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual result
+      description: What did FormulaM return or display?
+    validations:
+      required: true
+
+  - type: textarea
+    id: rationale
+    attributes:
+      label: Scientific rationale or reference
+      description: If relevant, explain the calculation, reference mass, expected correction, external tool comparison, or literature/source used.
+    validations:
+      required: false
+
+  - type: textarea
+    id: spectrum-data
+    attributes:
+      label: Spectrum, import, or assignment details
+      description: If this involves spectrum import, sheet detection, column detection, peak normalization, assignments, exports, or plots, describe the input data shape. You may attach files after creating the issue.
+      placeholder: |
+        File type:
+        Sheet name:
+        Relevant columns:
+        Example peaks:
+    validations:
+      required: false
+
+  - type: input
+    id: browser
+    attributes:
+      label: Browser
+      placeholder: "Example: Chrome 126, Firefox 127, Safari 18"
+    validations:
+      required: false
