@@ -1,56 +1,31 @@
 ## Summary
 
-Describe what changed and why.
+<!-- What changed, and why? -->
 
-## Type of change
+## Impact
 
-- [ ] Bug fix
-- [ ] Documentation
-- [ ] Test coverage
-- [ ] UI / accessibility
-- [ ] Refactor
-- [ ] Scientific behavior change
-- [ ] Build / deployment
-- [ ] Dependency change
+<!-- Check the main areas affected by this PR. -->
 
-## Scientific or user-facing behavior
+* [ ] Bug fix
+* [ ] Documentation
+* [ ] UI / accessibility
+* [ ] Scientific or calculation behavior
+* [ ] Tests / refactor / build / dependency
 
-Describe any change to formula enumeration, mass correction, tolerance handling, charge behavior, isotope handling, spectrum import/export, plotting, error messages, or result display.
+## Behavior notes
 
-If this PR does not affect scientific or user-facing behavior, write:
+<!-- Describe any user-facing or scientific behavior change. For scientific changes, mention affected m/z, charge, tolerance, isotope, import/export, plotting, or result-display behavior. -->
 
-```text
-No behavior change.
-```
+<!-- If there is no behavior change, write: No behavior change. -->
 
-## Architecture and deployment impact
+## Checks
 
-- [ ] This PR keeps FormulaM browser-only.
-- [ ] This PR does not add a required server, hosted API, runtime secret, telemetry, or account-bound service.
-- [ ] This PR does not change the GitHub Pages deployment base.
+<!-- Check what you ran. If a check was skipped, briefly explain why. -->
 
-If any box is not checked, explain why.
+* [ ] `npm test`
+* [ ] `npm run check`
+* [ ] `npm run build`
 
-## Tests and checks
+## Reviewer notes
 
-- [ ] `npm test`
-- [ ] `npm run check`
-- [ ] `npm run build`
-
-If any check was not run, explain why:
-
-<!-- Example: Not run because this is a documentation-only change. -->
-
-## Checklist
-
-- [ ] The PR is focused and reviewable.
-- [ ] Tests were added or updated when behavior changed.
-- [ ] Documentation was updated when user-facing behavior changed.
-- [ ] Scientific behavior changes are explained.
-- [ ] New dependencies are justified and browser-compatible.
-- [ ] `package-lock.json` is updated if dependencies changed.
-- [ ] No secrets, tokens, credentials, private keys, or environment-specific service configuration were committed.
-
-## Notes for reviewers
-
-Mention anything reviewers should pay special attention to.
+<!-- Optional: fixtures used, known limitations, dependency rationale, deployment/base-path changes, or anything reviewers should focus on. -->
